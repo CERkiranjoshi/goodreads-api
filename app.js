@@ -59,7 +59,6 @@ app.get("/api/books/search/id", (req, res, next) => {
   },
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log(response)
         parser.parseString(body, function (err, optdata) {
           res.status(HttpStatus.OK).json({
             result: "success",
