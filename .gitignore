@@ -1,0 +1,9 @@
+node_modules/
+application/cache
+logs
+*.log
+pids
+node_modules
+.npm
+*.dat
+.DS_Store
