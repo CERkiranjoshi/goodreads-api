@@ -50,9 +50,10 @@ if (!(APP_KEY && API_URL)) {
   process.exit(1);
 }
 
-app.get("/api/books/search/id", (req, res, next) => {
+app.post("/api/books/search/id", (req, res, next) => {
+  const bookID = req.param('id')
   request({
-    url: API_URL + "book/show/18646.xml?key=" + APP_KEY,
+    url: API_URL + "book/show/" + bookID + ".xml?key=" + APP_KEY,
     method: 'GET',
     format: 'json',
     headers: { 'Content-Type': 'application/json' }
@@ -77,9 +78,10 @@ app.get("/api/books/search/id", (req, res, next) => {
     });
 });
 
-app.get("/api/books/search", (req, res, next) => {
+app.post("/api/books/search", (req, res, next) => {
+  const searchString = req.param('search')
   request({
-    url: API_URL + "search/index.xml?key=" + APP_KEY + "&q=science",
+    url: API_URL + "search/index.xml?key=" + APP_KEY + "&q=" + searchString,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   },
